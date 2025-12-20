@@ -14,6 +14,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookedRoom {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate checkinDate;
     private LocalDate checkoutDate;
@@ -23,6 +25,9 @@ public class BookedRoom {
     private int numOfChildren;
     private int totalNumOfGuests;
     private String bookingConfirmationCode;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
     private Room room;
 
     public void calculateTotalGuests(){
