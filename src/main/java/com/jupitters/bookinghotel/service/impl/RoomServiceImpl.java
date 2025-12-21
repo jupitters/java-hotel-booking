@@ -4,6 +4,7 @@ import com.jupitters.bookinghotel.model.Room;
 import com.jupitters.bookinghotel.repository.RoomRepository;
 import com.jupitters.bookinghotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.sql.rowset.serial.SerialBlob;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.SQLException;
 
+@Service
 @RequiredArgsConstructor
 public class RoomServiceImpl implements RoomService {
     private final RoomRepository roomRepository;
