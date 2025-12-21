@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/room")
+@RequestMapping("${url.base}/room")
 public class RoomController {
     private final RoomService roomService;
 

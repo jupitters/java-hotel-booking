@@ -1,6 +1,9 @@
 server:
   port: 9192
 
+url:
+  base: /api/v1
+
 spring:
   datasource:
     username: root
