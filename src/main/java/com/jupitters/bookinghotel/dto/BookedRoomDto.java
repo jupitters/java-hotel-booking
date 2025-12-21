@@ -13,4 +13,11 @@ public class BookedRoomDto {
     private int totalNumOfGuests;
     private String bookingConfirmationCode;
     private RoomDto room;
+
+    public BookedRoomDto(Long id, LocalDate checkinDate, LocalDate checkoutDate, String bookingConfirmationCode) {
+        this.id = id;
+        this.checkinDate = checkinDate;
+        this.checkoutDate = checkoutDate;
+        this.bookingConfirmationCode = bookingConfirmationCode;
+    }
 }
