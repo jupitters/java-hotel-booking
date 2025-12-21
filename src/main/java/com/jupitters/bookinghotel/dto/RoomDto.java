@@ -17,6 +17,12 @@ public class RoomDto {
     private String photo;
     private List<BookedRoomDto> bookings;
 
+    public RoomDto(Long id, String roomType, BigDecimal roomPrice) {
+        this.id = id;
+        this.roomType = roomType;
+        this.roomPrice = roomPrice;
+    }
+
     public RoomDto(Long id, String roomType, BigDecimal roomPrice, boolean isBooked, byte[] photoByte, List<BookedRoomDto> bookings) {
         this.id = id;
         this.roomType = roomType;
