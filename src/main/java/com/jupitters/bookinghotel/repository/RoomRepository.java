@@ -1,4 +1,7 @@
 package com.jupitters.bookinghotel.repository;
 
-public interface RoomRepository {
+import com.jupitters.bookinghotel.model.Room;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoomRepository extends JpaRepository<Room, Long> {
 }
