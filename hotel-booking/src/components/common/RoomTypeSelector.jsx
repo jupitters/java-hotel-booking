@@ -8,7 +8,7 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
 
     useEffect(() => {
         getRoomTypes().then((data) => {
-            setRoomTypes(data.data.roomTypes)
+            setRoomTypes(data)
         })
     }, [])
 
@@ -39,11 +39,11 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
             }>
                 <option value={""}>Select a room type</option>
                 <option value={"Add New"}>Add New</option>
-                {roomTypes.map((type, index) => (
+                {/* {roomTypes.map((type, index) => (
                     <option key={index} value={type}>
                         {type}
                     </option>
-                ))}
+                ))} */}
             </select>
             {showNewRoomTypesInput && (
                 <div className='input-group'>
