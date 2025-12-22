@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import {getRoomTypes} from '../utils/ApiFunctions'
 
 const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
-    const [roomTypes, setRoomTypes] = useState([])
+    const [roomTypes, setRoomTypes] = useState([""])
     const [showNewRoomTypesInput, setShowNewRoomTypesInput] = useState(false)
     const [newRoomType, setNewRoomType] = useState("")
 
     useEffect(() => {
         getRoomTypes().then((data) => {
+            console.log(data)
             setRoomTypes(data)
         })
     }, [])
@@ -28,7 +29,7 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
         <>
         {roomTypes.length > 0 && (
             <div>
-            <select id="roomType" name='roomType' value={newRoom.roomType} onChange={
+            <select id="roomType" name='roomType' value={newRoom.roomTypes} onChange={
                 (e) => {
                     if(e.target.value === "Add New"){
                         setShowNewRoomTypesInput(true)
@@ -39,11 +40,11 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
             }>
                 <option value={""}>Select a room type</option>
                 <option value={"Add New"}>Add New</option>
-                {/* {roomTypes.map((type, index) => (
+                {roomTypes.map((type, index) => (
                     <option key={index} value={type}>
                         {type}
                     </option>
-                ))} */}
+                ))}
             </select>
             {showNewRoomTypesInput && (
                 <div className='input-group'>

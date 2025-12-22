@@ -10,19 +10,20 @@ const AddRoom = () => {
     })
 
     const [imagePreview, setImagePreview] = useState("")
-    const [succsessMessage, setSuccsessMessage] = useState("")
+    const [successMessage, setSuccessMessage] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
     const handleRoomInputChange = (e) => {
         const name = e.target.name
         let value = e.target.value 
         if(name === "roomPrice"){
-            if(!isNaN(value)){
-                value = parseInt(value)
+            if(!isNaN(value)) {
+                value.parseInt(value)
             } else {
                 value = ""
             }
         }
+
         setNewRoom({...newRoom, [name]:value})
     }
 
@@ -36,8 +37,8 @@ const AddRoom = () => {
         e.preventDefault()
         try {
             const success = await addRoom(newRoom.photo, newRoom.roomType, newRoom.roomPrice)
-            if(success != undefined){
-                setSuccsessMessage("A new room was added to the database!")
+            if(success !== undefined){
+                setSuccessMessage("A new room was added to the database!")
                 setNewRoom({photo: null, roomType: "", roomPrice: ""})
                 setImagePreview("")
                 setErrorMessage("")
@@ -51,7 +52,7 @@ const AddRoom = () => {
 
     return (
         <>
-        <section className='container mt-5 mb-5'>
+        <section className='container, mt-5 mb-5'>
             <div className='row justify-content-center'>
                 <div className='col-md-8 col-lg-6'>
                     <h2 className='mt-5 mb-2'>Add New Room</h2>
@@ -62,10 +63,12 @@ const AddRoom = () => {
                                 <RoomTypeSelector handleRoomInputChange={handleImageChange} newRoom={newRoom} />
                             </div>
                         </div>
+
                         <div className='mb-3'>
                             <label htmlFor="roomPrice" className='form-label'>Room Price</label>
                             <input className='form-control' required id='roomPrice' name='roomPrice' value={newRoom.roomPrice} onChange={handleRoomInputChange} type='number' />
                         </div>
+
                         <div className='mb-3'>
                             <label htmlFor="photo" className='form-label'>Room Photo</label>
                             <input className='form-control' onChange={handleImageChange} name="photo" id="photo" type='file' />
