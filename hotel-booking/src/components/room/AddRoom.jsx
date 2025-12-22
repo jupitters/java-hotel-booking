@@ -5,7 +5,7 @@ import RoomTypeSelector from '../common/RoomTypeSelector'
 const AddRoom = () => {
     const [newRoom, setNewRoom] = useState({
         photo: null,
-        roomType: "",
+        roomType: "",   
         roomPrice: ""
     })
 
@@ -23,7 +23,7 @@ const AddRoom = () => {
                 value = ""
             }
         }
-
+        console.log("handleRoomInputChange called with:", name, value);
         setNewRoom({...newRoom, [name]:value})
     }
 
@@ -35,6 +35,8 @@ const AddRoom = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(newRoom)
+
         try {
             const success = await addRoom(newRoom.photo, newRoom.roomType, newRoom.roomPrice)
             if(success !== undefined){
