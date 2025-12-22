@@ -24,7 +24,7 @@ async function getRoomTypes(){
         const response = await axios.get("/room/room-types")
         return response.data
     } catch(e) {
-        throw new Error("Error fetching room types!")
+        throw new Error("Error fetching room types: ", e)
     }
 }
 
