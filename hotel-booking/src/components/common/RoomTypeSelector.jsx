@@ -19,6 +19,12 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
     const handleAddNewRoomType = () => {
         if(newRoomType !== "") {
             setRoomTypes([...roomTypes, newRoomType])
+            handleRoomInputChange({
+                target: {
+                    name: "roomType",
+                    value: newRoomType
+                }
+            })
             setNewRoomType("")
             setShowNewRoomTypesInput(false)
         }
