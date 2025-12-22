@@ -22,9 +22,12 @@ public class RoomController {
     private final RoomService roomService;
 
     @PostMapping("/add")
-    public ResponseEntity<RoomDto> addNewRoom(@RequestParam("photo") MultipartFile photo, @RequestParam("roomType") String roomType, @RequestParam("roomPrice") BigDecimal roomPrice) throws SQLException, IOException {
+    public ResponseEntity<RoomDto> addNewRoom(
+        @RequestParam("photo") MultipartFile photo, 
+        @RequestParam("roomType") String roomType, 
+        @RequestParam("roomPrice") BigDecimal roomPrice) throws SQLException, IOException {
         Room savedRoom = roomService.addNewRoom(photo, roomType, roomPrice);
         RoomDto response = new RoomDto(savedRoom.getId(), savedRoom.getRoomType(), savedRoom.getRoomPrice());
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(201).body(response);
     }
 }

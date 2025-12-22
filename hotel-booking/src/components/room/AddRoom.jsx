@@ -18,7 +18,7 @@ const AddRoom = () => {
         let value = e.target.value 
         if(name === "roomPrice"){
             if(!isNaN(value)) {
-                value.parseInt(value)
+                value = parseInt(value)
             } else {
                 value = ""
             }
