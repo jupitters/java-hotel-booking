@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,5 +31,9 @@ public class RoomController {
             Room savedRoom = roomService.addNewRoom(photo, roomType, roomPrice);
         RoomDto response = new RoomDto(savedRoom.getId(), savedRoom.getRoomType(), savedRoom.getRoomPrice());
         return ResponseEntity.status(201).body(response);
+    }
+
+    public List<String> getRoomTypes() {
+        return roomService.getAllRoomTypes();
     }
 }
