@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const api = axios.create({
     baseURL: "http://localhost:9192"
 })
 
-async function addRoom(photo, roomType, roomPrice){
+export async function addRoom(photo, roomType, roomPrice){
     const formData = new FormData()
 
     formData.append("photo", photo)
@@ -19,7 +19,7 @@ async function addRoom(photo, roomType, roomPrice){
     }
 }
 
-async function getRoomTypes(){
+export async function getRoomTypes(){
     try{
         const response = await axios.get("/room/room-types")
         return response.data
@@ -28,4 +28,4 @@ async function getRoomTypes(){
     }
 }
 
-export default {api, addRoom, getRoomTypes}
+// export default {api, addRoom, getRoomTypes}
