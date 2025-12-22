@@ -45,6 +45,12 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
                     </option>
                 ))}
             </select>
+            {showNewRoomTypesInput && (
+                <div className='input-group'>
+                    <input className='form-control' type='text' placeholder='Enter a new room type' onChange={handleNewRoomInputChange} />
+                    <button className='btn btn-hotel' type='button' onClick={handleAddNewRoomType}>Add</button>
+                </div>
+            )}
             </div>
         )}
         </>
