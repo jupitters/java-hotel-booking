@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getRoomTypes } from '../utils/ApiFunctions'
 
 const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
-    const [roomTypes, setRoomTypes] = useState([""])
+    const [roomTypes, setRoomTypes] = useState([])
     const [showNewRoomTypeInput, setShowNewRoomTypesInput] = useState(false)
     const [newRoomType, setNewRoomType] = useState("")
 
@@ -11,6 +11,10 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
             setRoomTypes(data)
         })
     }, [])
+
+    useEffect(() => {
+  console.log("newRoom.roomType mudou para:", newRoom.roomType);
+}, [newRoom.roomType]);
 
     const handleNewRoomTypeInputChange = (e) => {
         setNewRoomType(e.target.value);
@@ -25,6 +29,10 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
                     value: newRoomType
                 }
             })
+
+            console.log("Tentou setar roomType para:", newRoomType)
+            console.log("Estado atual de newRoom.roomType:", newRoom.roomType)
+
             setNewRoomType("")
             setShowNewRoomTypesInput(false)
         }
@@ -32,7 +40,7 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
 
     return (
         <>
-        {roomTypes.length > 0 && (
+        {roomTypes.length >= 0 && (
             <div>
             <select id="roomType" name='roomType' value={newRoom.roomType} onChange={
                 (e) => {

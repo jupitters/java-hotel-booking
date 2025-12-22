@@ -26,7 +26,8 @@ public class RoomController {
         @RequestParam("photo") MultipartFile photo, 
         @RequestParam("roomType") String roomType, 
         @RequestParam("roomPrice") BigDecimal roomPrice) throws SQLException, IOException {
-        Room savedRoom = roomService.addNewRoom(photo, roomType, roomPrice);
+        
+            Room savedRoom = roomService.addNewRoom(photo, roomType, roomPrice);
         RoomDto response = new RoomDto(savedRoom.getId(), savedRoom.getRoomType(), savedRoom.getRoomPrice());
         return ResponseEntity.status(201).body(response);
     }
