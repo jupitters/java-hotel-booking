@@ -60,7 +60,7 @@ const AddRoom = () => {
                         <div className='mb-3'>
                             <label htmlFor="roomType" className='form-label'>Room Type</label>
                             <div>
-                                <RoomTypeSelector handleRoomInputChange={handleImageChange} newRoom={newRoom} />
+                                <RoomTypeSelector handleRoomInputChange={handleRoomInputChange} newRoom={newRoom} />
                             </div>
                         </div>
 
