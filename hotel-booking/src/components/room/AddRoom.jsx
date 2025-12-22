@@ -57,7 +57,20 @@ const AddRoom = () => {
                     <form onSubmit={handleSubmit}>
                         <div className='mb-3'>
                             <label htmlFor="roomType" className='form-label'>Room Type</label>
-
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor="roomPrice" className='form-label'>Room Price</label>
+                            <input className='form-control' required id='roomPrice' name='roomPrice' value={newRoom.roomPrice} onChange={handleRoomInputChange} type='number' />
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor="photo" className='form-label'>Room Photo</label>
+                            <input className='form-control' onChange={handleImageChange} name="photo" id="photo" type='file' />
+                            {imagePreview && (
+                                <img src={imagePreview} alt='Preview Room Photo' style={{maxWidth: '400px', maxHeight: '400px'}} className='mb-3' />
+                            )}
+                        </div>
+                        <div className='d-grid d-md-flex mt-2'>
+                            <button className='btn btn-outline-primary ml-5'>Save Room</button>
                         </div>
                     </form>
                 </div>
