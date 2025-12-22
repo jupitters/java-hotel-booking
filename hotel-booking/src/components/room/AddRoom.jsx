@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {addRoom} from '../utils/ApiFunctions'
 
 const AddRoom = () => {
     const [newRoom, setNewRoom] = useState({
@@ -22,6 +23,21 @@ const AddRoom = () => {
             }
         }
         setNewRoom({...newRoom, [name]:value})
+    }
+
+    const handleImageChange = (e) => {
+        const selectedImage = e.target.files[0]
+        setNewRoom({...newRoom, photo: selectedImage})
+        setImagePreview(URL.createObjectURL(selectedImage))
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const success = await AddRoom(newRoom.photo, newRoom.roomType, newRoom.roomPrice)
+        } catch (error) {
+            setErrorMessage(error.message)
+        }
     }
 
     return (
