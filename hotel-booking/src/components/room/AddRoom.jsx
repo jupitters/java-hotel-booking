@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const AddRoom = () => {
-  return (
-    <div>AddRoom</div>
-  )
+    const [newRoom, setNewRoom] = useState({
+        photo: null,
+        roomType: "",
+        roomPrice: ""
+    })
+
+    const [imagePreview, setImagePreview] = useState("")
+    const [succsessMessage, setSuccsessMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
+
+    const handleRoomInputChange = (e) => {
+        const name = e.target.name
+        let value = e.target.value 
+        if(name === "roomPrice"){
+            if(!isNaN(value)){
+                value.parseInt(value)
+            } else {
+                value = ""
+            }
+        }
+        setNewRoom({...newRoom, [name]:value})
+    }
+
+    return (
+        <div>
+
+        </div>
+    )
 }
 
 export default AddRoom
