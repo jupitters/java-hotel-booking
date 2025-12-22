@@ -12,20 +12,13 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
         })
     }, [])
 
-    useEffect(() => {
-  console.log("newRoom.roomType mudou para:", newRoom.roomType);
-}, [newRoom.roomType]);
-
     const handleNewRoomTypeInputChange = (e) => {
         setNewRoomType(e.target.value);
     }
 
     const handleAddNewRoomType = (e) => {
         e.preventDefault()
-        e.stopPropagation();
-        console.log("oiii")
         if(newRoomType !== "") {
-            console.log("Adicionando novo tipo:", newRoomType);
             setRoomTypes([...roomTypes, newRoomType])
             setNewRoomType("")
             setShowNewRoomTypesInput(false)
@@ -38,7 +31,6 @@ const RoomTypeSelector = ({handleRoomInputChange, newRoom}) => {
             <div>
             <select id="roomType" name='roomType' value={newRoom.roomType} onChange={
                 (e) => {
-                    console.log("Select onChange fired. Value:", e.target.value);
                     if(e.target.value === "Add New"){
                         setShowNewRoomTypesInput(true)
                     } else {
