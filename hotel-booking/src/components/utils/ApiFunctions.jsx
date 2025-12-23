@@ -29,4 +29,11 @@ export async function getRoomTypes(){
     }
 }
 
-// export default {api, addRoom, getRoomTypes}
+export async function getAllRooms(){
+    try {
+        const response = await api.get("/room/all")
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
