@@ -57,4 +57,9 @@ public class RoomServiceImpl implements RoomService {
         }
         return null;
     }
+
+    @Override
+    public void deleteRoom(Long roomId) {
+
+    }
 }
