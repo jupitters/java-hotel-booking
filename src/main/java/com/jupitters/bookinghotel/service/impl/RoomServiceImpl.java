@@ -1,5 +1,6 @@
 package com.jupitters.bookinghotel.service.impl;
 
+import com.jupitters.bookinghotel.exception.ResourceNotFoundException;
 import com.jupitters.bookinghotel.model.Room;
 import com.jupitters.bookinghotel.repository.RoomRepository;
 import com.jupitters.bookinghotel.service.RoomService;
