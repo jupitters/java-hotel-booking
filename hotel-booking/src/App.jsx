@@ -4,6 +4,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import ExistingRooms from "./components/room/ExistingRooms.jsx";
+import Home from "./components/home/Home.jsx";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
     <main>
         <Router>
             <Routes>
-                <Route path="/" />
+                <Route path="/" element={<Home />} />
             </Routes>
         </Router>
     </main>
