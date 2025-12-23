@@ -1,5 +1,6 @@
 package com.jupitters.bookinghotel.controller;
 
+import com.jupitters.bookinghotel.dto.BookedRoomDto;
 import com.jupitters.bookinghotel.dto.RoomDto;
 import com.jupitters.bookinghotel.model.BookedRoom;
 import com.jupitters.bookinghotel.model.Room;
@@ -60,6 +61,13 @@ public class RoomController {
 
     private RoomDto getRoomResponse(Room room) {
         List<BookedRoom> bookings = getAllBookingsByRoomId(room.getId());
+        List<BookedRoomDto> bookingResponse = bookings
+                .stream()
+                .map(booking -> new BookedRoomDto(booking.getId(),
+                        booking.getCheckinDate(),
+                        booking.getCheckoutDate(),
+                        booking.getBookingConfirmationCode()))
+                .toList();
     }
 
     private List<BookedRoom> getAllBookingsByRoomId(Long id) {
