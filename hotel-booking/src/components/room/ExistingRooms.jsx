@@ -101,7 +101,7 @@ const ExistingRooms = () => {
                                 <td>{room.id}</td>
                                 <td>{room.roomType}</td>
                                 <td>{room.roomPrice}</td>
-                                <td>
+                                <td className="gap-2">
                                     <Link to={`/room/${room.id}/view`}>
                                         <span className="btn btn-info btn-sm">
                                             <FaEye />
