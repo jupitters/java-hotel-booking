@@ -11,7 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,5 +36,22 @@ public class RoomController {
     @GetMapping("/room-types")
     public List<String> getRoomTypes() {
         return roomService.getAllRoomTypes();
+    }
+
+    public ResponseEntity<List<RoomDto>> getAllRooms() {
+        List<Room> rooms = roomService.getAllRooms();
+        List<RoomDto> roomsResponses = new ArrayList<>();
+
+        for(Room room : rooms){
+            byte[] photoBytes = roomService.getRoomPhotoByRoomId(room.getId());
+            if(photoBytes != null && photoBytes.length > 0){
+                String base64Photo = Base64.getEncoder().encodeToString(photoBytes);
+                RoomDto roomResponse = getRoomResponse(room);
+                roomResponse.setPhoto(base64Photo);
+                roomsResponses.add(roomResponse);
+            }
+        }
+
+        return ResponseEntity.ok(roomsResponses);
     }
 }
