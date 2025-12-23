@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getAllRooms} from "../utils/ApiFunctions.jsx";
+import {deleteRoom, getAllRooms} from "../utils/ApiFunctions.jsx";
 import {Col} from "react-bootstrap";
 import RoomFilter from "../common/RoomFilter.jsx";
 import RoomPaginator from "../common/RoomPaginator.jsx";
@@ -41,6 +41,17 @@ const ExistingRooms = () => {
 
     const handlePaginationClick = (pageNumber) => {
         setCurrentPage(pageNumber)
+    }
+
+    const handleDeleteRoom = async (roomid) => {
+        try {
+            const result = await deleteRoom(roomId)
+            if(result === ""){
+                setSuccessMessage(`Room Nº:${roomId} deleted successfully!`)
+            }
+        } catch (error) {
+            setErrorMessage(error.message)
+        }
     }
 
     const calculateTotalPages = (filteredRooms, roomsPerPage, rooms) => {
