@@ -2,6 +2,7 @@ package com.jupitters.bookinghotel.controller;
 
 import com.jupitters.bookinghotel.dto.BookedRoomDto;
 import com.jupitters.bookinghotel.dto.RoomDto;
+import com.jupitters.bookinghotel.exception.PhotoRetrievalException;
 import com.jupitters.bookinghotel.model.BookedRoom;
 import com.jupitters.bookinghotel.model.Room;
 import com.jupitters.bookinghotel.service.BookedRoomService;
@@ -75,7 +76,7 @@ public class RoomController {
             try{
                 photoBytes = photoBlob.getBytes(1, (int)photoBlob.length());
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                throw new PhotoRetrievalException("Error retrieving photo!");
             }
         }
         return new RoomDto(room.getId(),
