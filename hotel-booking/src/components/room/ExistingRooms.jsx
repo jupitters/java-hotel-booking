@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {getAllRooms} from "../utils/ApiFunctions.jsx";
 import {Col} from "react-bootstrap";
 import RoomFilter from "../common/RoomFilter.jsx";
+import RoomPaginator from "../common/RoomPaginator.jsx";
 
 const ExistingRooms = () => {
     const [rooms, setRooms] = useState([])
@@ -37,6 +38,10 @@ const ExistingRooms = () => {
         }
         setCurrentPage(1)
     }, [rooms, selectedRoomType])
+
+    const handlePaginationClick = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     const calculateTotalPages = (filteredRooms, roomsPerPage, rooms) => {
         const totalRooms = filteredRooms.length > 0 ? filteredRooms.length : rooms.length
@@ -84,6 +89,7 @@ const ExistingRooms = () => {
                         ))}
                         </tbody>
                     </table>
+                    <RoomPaginator currentPage={currentPage} totalPages={calculateTotalPages(filteredRooms, roomsPerPage, rooms)} onPageChange={handlePaginationClick} />
                 </section>
                 </>
             )}
