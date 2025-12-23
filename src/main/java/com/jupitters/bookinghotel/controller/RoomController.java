@@ -8,6 +8,7 @@ import com.jupitters.bookinghotel.model.Room;
 import com.jupitters.bookinghotel.service.BookedRoomService;
 import com.jupitters.bookinghotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -60,6 +61,12 @@ public class RoomController {
         }
 
         return ResponseEntity.ok(roomsResponses);
+    }
+
+    @DeleteMapping("/${roomId}/delete")
+    public ResponseEntity<Void> deleteRoom(@PathVariable Long roomId) {
+        roomService.deleteRoom(roomId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     private RoomDto getRoomResponse(Room room) {
