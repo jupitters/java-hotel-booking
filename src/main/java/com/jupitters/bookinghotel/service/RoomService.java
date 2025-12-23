@@ -14,4 +14,6 @@ public interface RoomService {
     List<String> getAllRoomTypes();
 
     List<Room> getAllRooms();
+
+    byte[] getRoomPhotoByRoomId(Long id);
 }

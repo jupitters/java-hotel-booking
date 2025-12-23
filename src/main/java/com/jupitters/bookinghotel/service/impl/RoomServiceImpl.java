@@ -42,4 +42,9 @@ public class RoomServiceImpl implements RoomService {
     public List<Room> getAllRooms() {
         return roomRepository.findAll();
     }
+
+    @Override
+    public byte[] getRoomPhotoByRoomId(Long id) {
+        return new byte[0];
+    }
 }
