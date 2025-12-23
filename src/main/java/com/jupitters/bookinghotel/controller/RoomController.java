@@ -3,6 +3,7 @@ package com.jupitters.bookinghotel.controller;
 import com.jupitters.bookinghotel.dto.RoomDto;
 import com.jupitters.bookinghotel.model.BookedRoom;
 import com.jupitters.bookinghotel.model.Room;
+import com.jupitters.bookinghotel.service.BookedRoomService;
 import com.jupitters.bookinghotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import java.util.stream.Stream;
 @RequestMapping("${url.base}/room")
 public class RoomController {
     private final RoomService roomService;
+    private final BookedRoomService bookingService;
 
     @PostMapping("/add")
     public ResponseEntity<RoomDto> addNewRoom(
@@ -61,5 +63,6 @@ public class RoomController {
     }
 
     private List<BookedRoom> getAllBookingsByRoomId(Long id) {
+        return bookingService.getAllBookingsByRoomId(id);
     }
 }
