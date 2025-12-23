@@ -3,6 +3,7 @@ import {deleteRoom, getAllRooms} from "../utils/ApiFunctions.jsx";
 import {Col} from "react-bootstrap";
 import RoomFilter from "../common/RoomFilter.jsx";
 import RoomPaginator from "../common/RoomPaginator.jsx";
+import {FaTrashAlt} from "react-icons/fa";
 
 const ExistingRooms = () => {
     const [rooms, setRooms] = useState([])
@@ -101,7 +102,9 @@ const ExistingRooms = () => {
                                 <td>{room.roomPrice}</td>
                                 <td>
                                     <button>View / Edit</button>
-                                    <button>Delete</button>
+                                    <button className="btn btn-danger btn-sm" onClick={() => handleDeleteRoom(room.id)}>
+                                        <FaTrashAlt />
+                                    </button>
                                 </td>
                             </tr>
                         ))}
