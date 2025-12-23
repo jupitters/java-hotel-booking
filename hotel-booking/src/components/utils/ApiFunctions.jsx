@@ -25,7 +25,7 @@ export async function getRoomTypes(){
         return response.data
     } catch(e) {
         console.error(e)
-        throw new Error("Error fetching room types: ", e)
+        throw new Error("Error fetching room types: ")
     }
 }
 
@@ -33,7 +33,7 @@ export async function getAllRooms(){
     try {
         const response = await api.get("/room/all")
         return response.data
-    } catch (e) {
-        console.log(e)
+    } catch (error) {
+        throw new Error("Error fetching rooms!")
     }
 }
