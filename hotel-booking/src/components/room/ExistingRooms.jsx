@@ -36,6 +36,16 @@ const ExistingRooms = () => {
         setCurrentPage(1)
     }, [rooms, selectedRoomType])
 
+    const calculateTotalPages = (filteredRooms, roomsPerPage, rooms) => {
+        const totalRooms = filteredRooms.length > 0 ? filteredRooms.length : rooms.length
+        return Math.ceil(totalRooms / roomsPerPage)
+    }
+
+    const indexOfLastRoom = currentPage * roomsPerPage
+    const indexOfFirstRoom = indexOfLastRoom - roomsPerPage
+    const currentRooms = filteredRooms.slice(indexOfFirstRoom, indexOfLastRoom)
+
+
     return (
         <div>
 
