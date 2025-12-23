@@ -44,6 +44,7 @@ public class RoomController {
         return roomService.getAllRoomTypes();
     }
 
+    @GetMapping("/all")
     public ResponseEntity<List<RoomDto>> getAllRooms() throws SQLException {
         List<Room> rooms = roomService.getAllRooms();
         List<RoomDto> roomsResponses = new ArrayList<>();
