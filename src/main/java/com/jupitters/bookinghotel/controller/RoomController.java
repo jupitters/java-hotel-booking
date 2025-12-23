@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -68,6 +69,21 @@ public class RoomController {
                         booking.getCheckoutDate(),
                         booking.getBookingConfirmationCode()))
                 .toList();
+        byte[] photoBytes = null;
+        Blob photoBlob = room.getPhoto();
+        if(photoBlob != null) {
+            try{
+                photoBytes = photoBlob.getBytes(1, (int)photoBlob.length());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return new RoomDto(room.getId(),
+                room.getRoomType(),
+                room.getRoomPrice(),
+                room.isBooked(),
+                photoBytes,
+                bookingResponse);
     }
 
     private List<BookedRoom> getAllBookingsByRoomId(Long id) {
