@@ -48,10 +48,17 @@ const ExistingRooms = () => {
             const result = await deleteRoom(roomId)
             if(result === ""){
                 setSuccessMessage(`Room Nº:${roomId} deleted successfully!`)
+                fetchRooms()
+            }else{
+                console.error(`Error deleting room: ${result.message}`)
             }
         } catch (error) {
             setErrorMessage(error.message)
         }
+        setTimeout(() => {
+            setSuccessMessage("")
+            setErrorMessage("")
+        }, 3000)
     }
 
     const calculateTotalPages = (filteredRooms, roomsPerPage, rooms) => {
