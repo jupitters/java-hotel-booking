@@ -1,6 +1,7 @@
 package com.jupitters.bookinghotel.controller;
 
 import com.jupitters.bookinghotel.dto.RoomDto;
+import com.jupitters.bookinghotel.model.BookedRoom;
 import com.jupitters.bookinghotel.model.Room;
 import com.jupitters.bookinghotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +39,7 @@ public class RoomController {
         return roomService.getAllRoomTypes();
     }
 
-    public ResponseEntity<List<RoomDto>> getAllRooms() {
+    public ResponseEntity<List<RoomDto>> getAllRooms() throws SQLException {
         List<Room> rooms = roomService.getAllRooms();
         List<RoomDto> roomsResponses = new ArrayList<>();
 
@@ -53,5 +54,12 @@ public class RoomController {
         }
 
         return ResponseEntity.ok(roomsResponses);
+    }
+
+    private RoomDto getRoomResponse(Room room) {
+        List<BookedRoom> bookings = getAllBookingsByRoomId(room.getId());
+    }
+
+    private List<BookedRoom> getAllBookingsByRoomId(Long id) {
     }
 }
