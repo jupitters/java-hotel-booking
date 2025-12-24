@@ -13,7 +13,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/" element={<Home />} />
+                <Route path="/:roomId/view" element={<ViewRoom />} />
             </Routes>
         </Router>
     </main>
