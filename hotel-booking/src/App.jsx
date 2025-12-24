@@ -15,11 +15,10 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/:roomId/view" element={<EditRoom />} />
+                <Route path="/existing-rooms" element={<ExistingRooms />} />
             </Routes>
         </Router>
     </main>
-        <AddRoom />
-        <ExistingRooms />
     </>
   )
 } 
