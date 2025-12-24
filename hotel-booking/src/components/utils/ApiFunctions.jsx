@@ -57,7 +57,7 @@ export async function updateRoom(roomId, roomData) {
     return response
 }
 
-expost async function getRoomById(roomId){
+export async function getRoomById(roomId){
     try {
         const result = await api.get(`/room/${roomId}`)
         return result.data
