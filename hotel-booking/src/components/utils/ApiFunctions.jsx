@@ -46,3 +46,14 @@ export async function deleteRoom(roomId) {
         throw new Error(`Error deleting room: ${error.message}`)
     }
 }
+
+export async function updateRoom(roomId, roomData) {
+    const formData = new FormData()
+    formData.append("roomType", roomData.roomType)
+    formData.append("roomPrice", roomData.roomPrice)
+    formData.append("photo", roomData.photo)
+
+    const response = api.put(`/room/${roomId}/update`)
+    return response
+
+}
