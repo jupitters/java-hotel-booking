@@ -38,14 +38,7 @@ export async function getAllRooms(){
     }
 }
 
-export async function deleteRoom(roomId) {
-    try{
-        const response = await api.delete(`/room/${roomId}/delete`)
-        return response.data
-    } catch (error) {
-        throw new Error(`Error deleting room: ${error.message}`)
-    }
-}
+
 
 export async function updateRoom(roomId, roomData) {
     const formData = new FormData()
