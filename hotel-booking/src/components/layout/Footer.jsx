@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="by-dark text-light py-3 footer mt-lg-5">
             <Container>
                 <Row>
-                    <Col xs={12}>
+                    <Col xs={12} md={12} className="text-center">
                         <p>&copy; {today.getFullYear()} Hotel</p>
                     </Col>
                 </Row>
