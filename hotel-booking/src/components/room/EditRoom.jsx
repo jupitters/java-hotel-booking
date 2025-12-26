@@ -76,13 +76,13 @@ const EditRoom = () => {
                             <div className='mb-3'>
                                 <label htmlFor="roomType" className='form-label'>Room Type</label>
                                 <div>
-                                    <RoomTypeSelector handleRoomInputChange={handleInputChange} newRoom={newRoom} />
+                                    <RoomTypeSelector handleRoomInputChange={handleInputChange} newRoom={room} />
                                 </div>
                             </div>
 
                             <div className='mb-3'>
                                 <label htmlFor="roomPrice" className='form-label'>Room Price</label>
-                                <input className='form-control' required id='roomPrice' name='roomPrice' value={newRoom.roomPrice} onChange={handleRoomInputChange} type='number' />
+                                <input className='form-control' required id='roomPrice' name='roomPrice' value={room.roomPrice} onChange={handleInputChange} type='number' />
                             </div>
 
                             <div className='mb-3'>
