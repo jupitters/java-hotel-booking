@@ -1,5 +1,5 @@
 const Navbar = () => {
-    reutn (
+    return (
         <>
         </>
     )
