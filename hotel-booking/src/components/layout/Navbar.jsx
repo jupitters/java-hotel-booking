@@ -1,11 +1,18 @@
 import {Link} from "react-router-dom";
 import {NavLink} from "react-bootstrap";
+import {useState} from "react";
 
 const Navbar = () => {
+    const [showAccount, setShowAccount] = useState(false)
+
+    const handleAccountClick = () => {
+        setShowAccount(!showAccount)
+    }
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top">
             <div className="container-fluid">
-                <Link to={"/"}>
+                <Link to={"/"} className="navbar-brand">
                     <span className="hotel-color"> Hotel</span>
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +27,7 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink classname="nav-link" aria-current="page" to={"/admin"}>
-                                Admin
+                                Manage Rooms
                             </NavLink>
                         </li>
                     </ul>
@@ -31,8 +38,12 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item dropdown">
-                            <a>Account</a>
-                            <ul>
+                            <a className={`nav-link dropdown-toggle ${showAccount ? "show" : ""}`} href="#"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={handleAccountClick}>
+                                {""}
+                                Account
+                            </a>
+                            <ul className={`dropdown-menu ${showAccount ? "show" : ""}`} aria-labelledby="navbarDropdown">
                                 <li>
                                     <Link to={"/login"} className="dropdown-item">
                                         Login
@@ -42,6 +53,9 @@ const Navbar = () => {
                                     <Link to={"/profile"} className="dropdown-item">
                                         Profile
                                     </Link>
+                                </li>
+                                <li>
+                                    <hr className="dropdown-divider" />
                                 </li>
                                 <li>
                                     <Link to={"/logout"} className="dropdown-item">
