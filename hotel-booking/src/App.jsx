@@ -16,6 +16,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/:roomId/view" element={<EditRoom />} />
                 <Route path="/existing-rooms" element={<ExistingRooms />} />
+                <Route path="/add-room" element={<AddRoom />} />
             </Routes>
         </Router>
     </main>
