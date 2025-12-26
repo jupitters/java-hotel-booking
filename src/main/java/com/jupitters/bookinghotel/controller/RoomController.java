@@ -76,6 +76,8 @@ public class RoomController {
         Blob photoBlob = photoBytes != null && photoBytes.length > 0 ? new SerialBlob(photoBytes) : null;
         Room room = roomService.updateRoom(roomId, roomType, roomPrice, photoBytes);
         room.setPhoto(photoBlob);
+        RoomDto roomResponse = getRoomResponse(room);
+        return ResponseEntity.ok(roomResponse);
     }
 
     private RoomDto getRoomResponse(Room room) {
