@@ -69,6 +69,11 @@ public class RoomController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @PutMapping("/{roomId}/update")
+    public ResponseEntity<RoomDto> updateRoom(@PathVariable Long roomId, @RequestParam(required = false) String roomType, @RequestParam(required = false) String roomPrice, @RequestParam(required = false)  MultipartFile photo) {
+
+    }
+
     private RoomDto getRoomResponse(Room room) {
         List<BookedRoom> bookings = getAllBookingsByRoomId(room.getId());
         List<BookedRoomDto> bookingResponse = bookings
@@ -98,4 +103,6 @@ public class RoomController {
     private List<BookedRoom> getAllBookingsByRoomId(Long id) {
         return bookingService.getAllBookingsByRoomId(id);
     }
+
+
 }
