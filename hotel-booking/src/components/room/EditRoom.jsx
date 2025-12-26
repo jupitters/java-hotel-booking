@@ -76,7 +76,7 @@ const EditRoom = () => {
                             <div className='mb-3'>
                                 <label htmlFor="roomType" className='form-label'>Room Type</label>
                                 <div>
-                                    <RoomTypeSelector handleRoomInputChange={handleRoomInputChange} newRoom={newRoom} />
+                                    <RoomTypeSelector handleRoomInputChange={handleInputChange} newRoom={newRoom} />
                                 </div>
                             </div>
 
