@@ -3,6 +3,7 @@ package com.jupitters.bookinghotel.controller;
 import com.jupitters.bookinghotel.dto.BookedRoomDto;
 import com.jupitters.bookinghotel.dto.RoomDto;
 import com.jupitters.bookinghotel.exception.PhotoRetrievalException;
+import com.jupitters.bookinghotel.exception.ResourceNotFoundException;
 import com.jupitters.bookinghotel.model.BookedRoom;
 import com.jupitters.bookinghotel.model.Room;
 import com.jupitters.bookinghotel.service.BookedRoomService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.sql.rowset.serial.SerialBlob;
+import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Blob;
@@ -21,6 +23,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @RestController
@@ -78,6 +81,15 @@ public class RoomController {
         room.setPhoto(photoBlob);
         RoomDto roomResponse = getRoomResponse(room);
         return ResponseEntity.ok(roomResponse);
+    }
+
+    @GetMapping("/{roomId}")
+    public ResponseEntity<Optional<RoomDto>> getRoomById(@PathVariable Long roomId) {
+        Optional<Room> room = roomService.getRoomById(roomId);
+        return room.map(r -> {
+            RoomDto roomResponse = getRoomResponse(r);
+            return ResponseEntity.ok(Optional.of(roomResponse));
+        }).orElseThrow(() -> new ResourceNotFoundException("Room not found!"));
     }
 
     private RoomDto getRoomResponse(Room room) {
