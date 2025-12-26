@@ -18,6 +18,21 @@ const Navbar = () => {
                                 Browse all rooms
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink classname="nav-link" aria-current="page" to={"/admin"}>
+                                Admin
+                            </NavLink>
+                        </li>
+                    </ul>
+                    <ul className="d-flex navbar-nav">
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to={"/find-booking"}>
+                                Find My Booking
+                            </NavLink>
+                        </li>
+                        <li className="nav-item dropdown">
+                            <a></a>
+                        </li>
                     </ul>
 
                 </div>
