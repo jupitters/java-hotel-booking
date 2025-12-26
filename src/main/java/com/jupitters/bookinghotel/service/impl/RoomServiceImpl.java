@@ -65,4 +65,13 @@ public class RoomServiceImpl implements RoomService {
             roomRepository.deleteById(roomId);
         }
     }
+
+    @Override
+    public Room updateRoom(Long roomId, String roomType, BigDecimal roomPrice, byte[] photoBytes) {
+        Room room = roomRepository.findById(roomId)
+                .orElseThrow(() -> new ResourceNotFoundException("Room not found!"));
+
+        if(roomType != null) room.setRoomType(roomType);
+        if(roomPrice != null) room.setRoomPrice(roomPrice);
+    }
 }
