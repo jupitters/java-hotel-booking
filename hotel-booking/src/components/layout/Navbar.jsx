@@ -32,6 +32,23 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item dropdown">
                             <a></a>
+                            <ul>
+                                <li>
+                                    <Link to={"/login"} className="dropdown-item">
+                                        Login
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to={"/profile"} className="dropdown-item">
+                                        Profile
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to={"/logout"} className="dropdown-item">
+                                        Logout
+                                    </Link>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
 
