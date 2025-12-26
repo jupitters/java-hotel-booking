@@ -1,8 +1,18 @@
+import {Col, Container, Row} from "react-bootstrap";
+
 const Footer = () => {
+    let today = new Date()
     return (
-        <>
-        </>
+        <footer className="by-dark text-light py-3 footer mt-lg-5">
+            <Container>
+                <Row>
+                    <Col xs={12}>
+                        <p>&copy; {today.getFullYear()} Hotel</p>
+                    </Col>
+                </Row>
+            </Container>
+        </footer>
     )
 }
 
-esport default Footer
+export default Footer
