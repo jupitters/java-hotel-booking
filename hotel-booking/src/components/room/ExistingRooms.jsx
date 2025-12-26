@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {deleteRoom, getAllRooms} from "../utils/ApiFunctions.jsx";
-import {Col} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import RoomFilter from "../common/RoomFilter.jsx";
 import RoomPaginator from "../common/RoomPaginator.jsx";
 import {FaEdit, FaEye, FaPlus, FaTrashAlt} from "react-icons/fa";
@@ -45,12 +45,12 @@ const ExistingRooms = () => {
         setCurrentPage(pageNumber)
     }
 
-    const handleDeleteRoom = async (roomid) => {
+    const handleDeleteRoom = async (roomId) => {
         try {
             const result = await deleteRoom(roomId)
             if(result === ""){
                 setSuccessMessage(`Room Nº:${roomId} deleted successfully!`)
-                fetchRooms()
+                await fetchRooms()
             }else{
                 console.error(`Error deleting room: ${result.message}`)
             }
@@ -83,14 +83,16 @@ const ExistingRooms = () => {
                     <div className="d-flex justify-content-between mb-3 mt-5">
                         <h2>Existing rooms</h2>
                     </div>
-                    <Col md={6} className="mb-3 mb-md-0">
-                        <RoomFilter data={rooms} setFilteredData={setFilteredRooms()} />
-                    </Col>
-                    <Col>
-                        <Link to={"/add-room"} >
-                            <FaPlus /> Add New Room
-                        </Link>
-                    </Col>
+                    <Row>
+                        <Col md={6} className="mb-3 mb-md-0">
+                            <RoomFilter data={rooms} setFilteredData={setFilteredRooms} />
+                        </Col>
+                        <Col md={6} className="d-flex justify-content-end">
+                            <Link to={"/add-room"} >
+                                <FaPlus /> Add New Room
+                            </Link>
+                        </Col>
+                    </Row>
                     <table className="table table-bordered table-hover">
                         <thead>
                             <tr className="text-center">
