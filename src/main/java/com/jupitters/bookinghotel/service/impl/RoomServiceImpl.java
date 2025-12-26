@@ -73,5 +73,13 @@ public class RoomServiceImpl implements RoomService {
 
         if(roomType != null) room.setRoomType(roomType);
         if(roomPrice != null) room.setRoomPrice(roomPrice);
+        if(photoBytes != null && photoBytes.length > 0) {
+            try {
+                room.setPhoto(new SerialBlob(photoBytes));
+            } catch(SQLException e) {
+                throw new InternalServerException("Error updating room!");
+            }
+        }
+        return roomRepository.save(room);
     }
 }
