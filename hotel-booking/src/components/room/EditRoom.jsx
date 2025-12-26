@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {getRoomById, updateRoom} from "../utils/ApiFunctions.jsx";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import RoomTypeSelector from "../common/RoomTypeSelector.jsx";
 
 const EditRoom = () => {
@@ -92,8 +92,11 @@ const EditRoom = () => {
                                     <img src={imagePreview} alt='Preview Room Photo' style={{maxWidth: '400px', maxHeight: '400px'}} className='mb-3' />
                                 )}
                             </div>
-                            <div className='d-grid d-md-flex mt-2'>
-                                <button className='btn btn-outline-primary ml-5'>Save Room</button>
+                            <div className='d-grid gap-2 d-md-flex mt-2'>
+                                <Link to={"/existing-rooms"} className="btn btn-outline-info ml-5">
+                                    back
+                                </Link>
+                                <button type="submit" className='btn btn-outline-warning'>Edit Room</button>
                             </div>
                         </form>
                     </div>
