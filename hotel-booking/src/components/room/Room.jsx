@@ -1,4 +1,5 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getAllRooms} from "../utils/ApiFunctions.jsx";
 
 const Room = () => {
     const [data, setData] = useState([])
@@ -8,7 +9,14 @@ const Room = () => {
     const [roomsPerPage, setRoomsPerPage] = useState(6)
     const [filteredData, setFilteredData] = useState([])
 
-
+    useEffect(() => {
+        setIsLoading(true)
+        getAllRooms().then((data) => {
+            setData(data)
+            setFilteredData(data)
+            setIsLoading(false)
+        })
+    }, []);
 
     return (
         <>
