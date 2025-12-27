@@ -75,8 +75,8 @@ body {
   font-size:medium;
 }
 .vertical-rule{
-  border-left: '0.5px solid black';
-  height: '100vh'
+  border-left: 0.5px solid black;
+  height: 100vh;
 }
 
 
