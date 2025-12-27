@@ -1,12 +1,15 @@
 package com.jupitters.bookinghotel.controller;
 
 import com.jupitters.bookinghotel.dto.BookedRoomDto;
+import com.jupitters.bookinghotel.exception.ResourceNotFoundException;
 import com.jupitters.bookinghotel.model.BookedRoom;
 import com.jupitters.bookinghotel.service.BookedRoomService;
 import com.jupitters.bookinghotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,5 +31,16 @@ public class BookedRoomController {
             bookingsResponses.add(bookingResponse);
         }
         return ResponseEntity.ok(bookingsResponses);
+    }
+
+    @GetMapping("/confirmation/{confirmationCode}")
+    public ResponseEntity<?> getBookingByConfirmationCode(@PathVariable String confirmationCode) {
+        try{
+            BookedRoom booking = bookingService.findByBookingConfirmationCode(confirmationCode);
+            BookedRoomDto bookingResponse = getBookingResponse(booking);
+            return ResponseEntity.ok(bookingResponse);
+        } catch(ResourceNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 }
