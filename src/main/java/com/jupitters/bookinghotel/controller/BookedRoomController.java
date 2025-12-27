@@ -1,8 +1,10 @@
 package com.jupitters.bookinghotel.controller;
 
 import com.jupitters.bookinghotel.dto.BookedRoomDto;
+import com.jupitters.bookinghotel.dto.RoomDto;
 import com.jupitters.bookinghotel.exception.ResourceNotFoundException;
 import com.jupitters.bookinghotel.model.BookedRoom;
+import com.jupitters.bookinghotel.model.Room;
 import com.jupitters.bookinghotel.service.BookedRoomService;
 import com.jupitters.bookinghotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.List;
 @RequestMapping("${url.base}/booking")
 public class BookedRoomController {
     private final BookedRoomService bookingService;
+    private final RoomService roomService;
 
     @GetMapping("/all")
     public ResponseEntity<List<BookedRoomDto>> getAllBookings() {
@@ -56,5 +59,16 @@ public class BookedRoomController {
     @DeleteMapping("/{bookingId}/cancel")
     public void cancelBooking(@PathVariable Long bookingId) {
         bookingService.cancelBooking(bookingId);
+    }
+
+    private BookedRoomDto getBookingResponse(BookedRoom booking) {
+        Room room = roomService.getRoomById(booking.getRoom().getId()).get();
+        RoomDto response = new RoomDto(room.getId(), room.getRoomType(), room.getRoomPrice());
+        return new BookedRoomDto(
+                booking.getId(), booking.getCheckinDate(),
+                booking.getCheckoutDate(), booking.getGuestFullName(),
+                booking.getGuestEmail(), booking.getNumOfAdults(),
+                booking.getNumOfChildren(), booking.getTotalNumOfGuests(),
+                booking.getBookingConfirmationCode(), response);
     }
 }
