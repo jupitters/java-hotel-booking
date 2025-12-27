@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react";
 import {getAllRooms} from "../utils/ApiFunctions.jsx";
 import RoomCard from "./RoomCard.jsx";
+import {Col, Container, Row} from "react-bootstrap";
+import RoomFilter from "../common/RoomFilter.jsx";
+import RoomPaginator from "../common/RoomPaginator.jsx";
 
 const Room = () => {
     const [data, setData] = useState([])
@@ -42,8 +45,19 @@ const Room = () => {
     }
 
     return (
-        <>
-        </>
+        <Container>
+            <Row>
+                <Col md={6} className="mb-3 mb-md-0">
+                    <RoomFilter data={data} setFilteredData={setFilteredData} />
+                </Col>
+                <Col md={6} className="mb-3 mb-md-0">
+                    <RoomPaginator currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange}/>
+                </Col>
+            </Row>
+            <Row>
+                {renderRooms()}
+            </Row>
+        </Container>
     )
 }
 
