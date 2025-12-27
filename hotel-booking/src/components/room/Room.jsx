@@ -15,8 +15,18 @@ const Room = () => {
             setData(data)
             setFilteredData(data)
             setIsLoading(false)
+        }).catch((error) => {
+            setError(error.message)
+            setIsLoading(false)
         })
     }, []);
+
+    if(isLoading){
+        return <div>Loading rooms...</div>
+    }
+    if(error){
+        return <div className="text-danger">Error: {error}</div>
+    }
 
     return (
         <>
