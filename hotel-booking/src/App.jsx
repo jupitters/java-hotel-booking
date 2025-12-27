@@ -12,7 +12,6 @@ import RoomListing from "./components/room/RoomListing.jsx";
 
 function App() {
   return (
-    <>
     <main>
         <Router>
             <Navbar />
@@ -26,7 +25,6 @@ function App() {
         </Router>
         <Footer />
     </main>
-    </>
   )
 } 
 
