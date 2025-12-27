@@ -38,7 +38,7 @@ const Room = () => {
     const renderRooms = () => {
         const startIndex = (currentPage -1) * roomsPerPage
         const endIndex = startIndex + roomsPerPage
-        return filteredData.slice(startIndex, endIndex).map((room) => <RoomCard />)
+        return filteredData.slice(startIndex, endIndex).map((room) => <RoomCard key={room.id} room={room} />)
     }
 
     return (
