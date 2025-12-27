@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {Card, Carousel, Col, Container, Row} from "react-bootstrap";
 
 const RoomCarousel = () => {
-    const [rooms, setRooms] = useState([])
+    const [rooms, setRooms] = useState([{id:"", roomType:"",roomPrice:"", photo:""}])
     const [errorMessage, setErrorMessage] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
@@ -48,7 +48,7 @@ const RoomCarousel = () => {
 
                                                 <div className="flex-shrink-0">
                                                     <Link to={`/${room.id}/book-room`} className="btn btn-sm btn-hotel">
-                                                        View/Book Now
+                                                        Book Now
                                                     </Link>
                                                 </div>
                                             </Card.Body>
