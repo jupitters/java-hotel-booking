@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {getAllRooms} from "../utils/ApiFunctions.jsx";
+import RoomCard from "./RoomCard.jsx";
 
 const Room = () => {
     const [data, setData] = useState([])
@@ -26,6 +27,18 @@ const Room = () => {
     }
     if(error){
         return <div className="text-danger">Error: {error}</div>
+    }
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+
+    const totalPages = Math.ceil(filteredData.length / roomsPerPage)
+
+    const renderRooms = () => {
+        const startIndex = (currentPage -1) * roomsPerPage
+        const endIndex = startIndex + roomsPerPage
+        return filteredData.slice(startIndex, endIndex).map((room) => <RoomCard />)
     }
 
     return (
