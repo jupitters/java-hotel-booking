@@ -15,4 +15,24 @@ public class BookedRoomServiceImpl implements BookedRoomService {
     public List<BookedRoom> getAllBookingsByRoomId(Long id) {
         return List.of();
     }
+
+    @Override
+    public void cancelBooking(Long bookingId) {
+
+    }
+
+    @Override
+    public String saveBooking(Long roomId, BookedRoom bookingRequest) {
+        return "";
+    }
+
+    @Override
+    public BookedRoom findByBookingConfirmationCode(String confirmationCode) {
+        return null;
+    }
+
+    @Override
+    public List<BookedRoom> getAllBookings() {
+        return List.of();
+    }
 }
