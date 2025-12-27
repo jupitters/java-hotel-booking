@@ -52,4 +52,9 @@ public class BookedRoomController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @DeleteMapping("/{bookingId}/cancel")
+    public void cancelBooking(@PathVariable Long bookingId) {
+        bookingService.cancelBooking(bookingId);
+    }
 }
