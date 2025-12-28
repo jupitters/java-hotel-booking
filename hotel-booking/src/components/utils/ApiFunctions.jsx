@@ -87,3 +87,11 @@ export async function getAllBookings() {
         throw new Error(`Error fetching bookings: ${error.message}`)
     }
 }
+
+export async function getBookingByConfirmationCode(confirmationCode) {
+    try{
+        const result = await api.get(`/booking/confirmation/${confirmationCode}`)
+    }catch(error){
+
+    }
+}
