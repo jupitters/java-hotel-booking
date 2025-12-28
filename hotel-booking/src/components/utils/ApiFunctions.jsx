@@ -65,3 +65,16 @@ export async function getRoomById(roomId){
         throw new Error(`Error fetching room ${error.message}`)
     }
 }
+
+export async function bookRoom(roomId, booking){
+    try{
+        const response = await api.post(`/booking/${roomId}/book`, booking)
+        return response.data
+    } catch(error){
+        if(error.response && error.response.data){
+            throw new Error(error.response.data)
+        }else{
+            throw new Error(`Error booking room: ${error.message}`)
+        }
+    }
+}
