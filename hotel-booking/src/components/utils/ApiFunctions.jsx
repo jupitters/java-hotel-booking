@@ -103,7 +103,7 @@ export async function getBookingByConfirmationCode(confirmationCode) {
 
 export async function cancelBooking(bookingId) {
     try{
-        const response = await api.delete(`/booking/${bookingId}/cancel`)
+        const result = await api.delete(`/booking/${bookingId}/cancel`)
         return result.data
     } catch(error) {
         throw new Error(`Error canceiling booking: ${error.message}`)
