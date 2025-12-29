@@ -116,6 +116,30 @@ const BookingForm = () => {
                                     Please, enter your email.
                                 </Form.Control.Feedback>
                             </Form.Group>
+                            <fieldset style={{border: "2px"}}>
+                                <legend>Loading period</legend>
+                                <div className='row'>
+                                    <div className='col-6'>
+                                        <Form.Label htmlFor="checkInDate">
+                                            Check-In Date: 
+                                        </Form.Label>
+                                        <Form.Control required type="date" id="checkInDate" name="checkInDate" value={booking.checkInDate} placeholder="Check-In Date" onChange={handleInputChange} />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please, select a check-in date.
+                                        </Form.Control.Feedback>
+                                    </div>
+                                    <div className='col-6'>
+                                        <Form.Label htmlFor="checkOutDate">
+                                            Check-Out Date: 
+                                        </Form.Label>
+                                        <Form.Control required type="date" id="checkOutDate" name="checkOutDate" value={booking.checkOutDate} placeholder="Check-In Date" onChange={handleInputChange} />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please, select a check-out date.
+                                        </Form.Control.Feedback>
+                                    </div>
+                                    {errorMessage && <p className='error-message text-danger'>{errorMessage}</p>}
+                                </div>
+                            </fieldset>
                         </Form>
                     </div>
                 </div>
