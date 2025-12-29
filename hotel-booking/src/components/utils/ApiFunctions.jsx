@@ -95,6 +95,8 @@ export async function getBookingByConfirmationCode(confirmationCode) {
     }catch(error){
         if(error.response && error.message.data){
             throw new Error(error.response.data)
+        }else {
+            throw new Error(`Error finding booking: ${error.message}`)
         }
     }
 }
