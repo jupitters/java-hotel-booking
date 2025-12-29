@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams} from "react-router-dom";
 import { getRoomById } from '../utils/ApiFunctions'
+import moment from "moment"
 
 const BookingForm = () => {
     const { roomId } = useParams()
@@ -42,7 +43,7 @@ const BookingForm = () => {
     }, [roomId])
 
     const calculatePayment = () => {
-        const checkInDate = moment()
+        const checkInDate = moment(booking.checkInDate)
     }
 
     return (
