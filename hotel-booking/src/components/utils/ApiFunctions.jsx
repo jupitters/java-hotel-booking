@@ -91,7 +91,10 @@ export async function getAllBookings() {
 export async function getBookingByConfirmationCode(confirmationCode) {
     try{
         const result = await api.get(`/booking/confirmation/${confirmationCode}`)
+        return result.data
     }catch(error){
-
+        if(error.response && error.message.data){
+            throw new Error(error.response.data)
+        }
     }
 }
