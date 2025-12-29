@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Form, useNavigate, useParams} from "react-router-dom";
 import { bookRoom, getRoomById } from '../utils/ApiFunctions'
 import moment from "moment"
+import BookingSummary from './BookingSummary';
 
 const BookingForm = () => {
     const { roomId } = useParams()
@@ -97,7 +98,7 @@ const BookingForm = () => {
                 <div className='col-md-6'>
                     <div className='card card-body mt-5'>
                         <h4 className='card card-title'>Reserve Room</h4>
-                        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                        <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
                             <Form.Group>
                                 <Form.Label htmlFor="guestName">
                                     Full Name: 
@@ -160,10 +161,17 @@ const BookingForm = () => {
                                     </div>
                                 </div>
                             </fieldset>
+                            <div className='form-group mt-2 mb-2'>
+                                <button type='submit' className='btn btn-hotel'>Continue</button>
+                            </div>
                         </Form>
                     </div>
                 </div>
-
+                <div className='col-md-6'>
+                    {isSubmited && (
+                        <BookingSummary booking={booking} payment={calculatePayment} isFormValid={isValidated} onConfirm={handleBooking} />
+                    )}
+                </div>
             </div>
         </div>
         </>
