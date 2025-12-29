@@ -30,8 +30,8 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
         <h4>Reservation Summary</h4>
         <p>Fullname: <strong>{booking.guestName}</strong></p>
         <p>Email: <strong>{booking.guestEmail}</strong></p>
-        <p>Check-in Date: <strong>{moment(booking.checkInDate).format("DD MM YYYY")}</strong></p>
-        <p>Check-out Date: <strong>{moment(booking.checkOutDate).format("DD MM YYYY")}</strong></p>
+        <p>Check-in Date: <strong>{moment(booking.checkInDate).format("DD MMM YYYY")}</strong></p>
+        <p>Check-out Date: <strong>{moment(booking.checkOutDate).format("DD MMM YYYY")}</strong></p>
         <p>Number of Days: <strong>{numberOfDays}</strong></p>
         <div>
             <h5>Number of Guests:</h5>
