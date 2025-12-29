@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams} from "react-router-dom";
-import { getRoomById } from '../utils/ApiFunctions'
+import { useNavigate, useParams} from "react-router-dom";
+import { bookRoom, getRoomById } from '../utils/ApiFunctions'
 import moment from "moment"
 
 const BookingForm = () => {
     const { roomId } = useParams()
+    const navigate = useNavigate()
     const [isValidated, setIsValidated] = useState(false)
     const [isSubmited, setIsSubmited] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
@@ -55,6 +56,38 @@ const BookingForm = () => {
         const childrenCount = parseInt(booking.numberOfChildren)
         const totalCount = adultCount + childrenCount
         return totalCount >= 1 && adultCount >= 1
+    }
+
+    const isCheckoutDateValid = () => {
+        if(!moment(booking.checkOutDate).isSameOrAfter(moment(booking.checkInDate))) {
+            setErrorMessage("Check-out date must come before the check-in!")
+            return false
+        }else {
+            setErrorMessage("")
+            return true
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const form = e.currentTarget
+        if(form.checkValidity() === false || !isGuestValid() || !isCheckoutDateValid()){
+            e.stopPropagation()
+        }else{
+            setIsSubmited(true)
+        }
+        setIsValidated(true)
+    }
+
+    const handleBooking = async () => {
+        try{
+            const confirmationCode = await bookRoom(roomId, booking)
+            setIsSubmited(true)
+            navigate("/", {state:{ message:confirmationCode }}) 
+        }catch (error) {
+            setErrorMessage(error.message)
+            navigate("/", {state:{ error: errorMessage }})
+        }
     }
 
     return (
