@@ -17,7 +17,10 @@ const BookingSuccess = () => {
                     </div>
 
                 ): (
-                    <div></div>
+                    <div>
+                        <h3 className='text-error'>Error Booking Room!</h3>
+                        <p className='text-error'>{error}</p>
+                    </div>
                 )}
             </div>
 
