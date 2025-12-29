@@ -140,6 +140,26 @@ const BookingForm = () => {
                                     {errorMessage && <p className='error-message text-danger'>{errorMessage}</p>}
                                 </div>
                             </fieldset>
+                            <fieldset>
+                                <legend>Number of Guests</legend>
+                                <div className='row'>
+                                    <div className='col-6'>
+                                        <Form.Label htmlFor="numberOfAdults">
+                                            Adults: 
+                                        </Form.Label>
+                                        <Form.Control required type="number" id="numberOfAdults" name="numberOfAdults" value={booking.numberOfAdults} placeholder="0" min={1} onChange={handleInputChange} />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please, select at least 1 adult.
+                                        </Form.Control.Feedback>
+                                    </div>
+                                    <div className='col-6'>
+                                        <Form.Label htmlFor="numberOfChildren">
+                                            Children: 
+                                        </Form.Label>
+                                        <Form.Control required type="number" id="numberOfChildren" name="numberOfChildren" value={booking.numberOfChildren} placeholder="0" onChange={handleInputChange} />
+                                    </div>
+                                </div>
+                            </fieldset>
                         </Form>
                     </div>
                 </div>
