@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams} from "react-router-dom";
+import { Form, useNavigate, useParams} from "react-router-dom";
 import { bookRoom, getRoomById } from '../utils/ApiFunctions'
 import moment from "moment"
 
@@ -91,7 +91,38 @@ const BookingForm = () => {
     }
 
     return (
-        <div>BookingForm</div>
+        <>
+        <div className='container mb-5'>
+            <div className='row'>
+                <div className='col-md-6'>
+                    <div className='card card-body mt-5'>
+                        <h4 className='card card-title'>Reserve Room</h4>
+                        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                            <Form.Group>
+                                <Form.Label htmlFor="guestName">
+                                    Full Name: 
+                                </Form.Label>
+                                <Form.Control required type="text" id="guestName" name="guestName" value={booking.guestName} placeholder="Enter your full name" onChange={handleInputChange} />
+                                <Form.Control.Feedback type="invalid">
+                                    Please, enter your full name.
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label htmlFor="guestEmail">
+                                    Email: 
+                                </Form.Label>
+                                <Form.Control required type="email" id="guestEmail" name="guestEmail" value={booking.guestEmail} placeholder="Enter your email" onChange={handleInputChange} />
+                                <Form.Control.Feedback type="invalid">
+                                    Please, enter your email.
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </>
     )
 }
 
