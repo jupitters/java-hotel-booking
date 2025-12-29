@@ -44,6 +44,17 @@ const BookingForm = () => {
 
     const calculatePayment = () => {
         const checkInDate = moment(booking.checkInDate)
+        const checkOutDate = moment(booking.checkOutDate)
+        const diffInDays = checkOutDate.diff(checkInDate)
+        const price = roomPrice ? roomPrice : 0
+        return diffInDays * price
+    }
+
+    const isGuestValid = () => {
+        const adultCount = parseInt(booking.numberOfAdults)
+        const childrenCount = parseInt(booking.numberOfChildren)
+        const totalCount = adultCount + childrenCount
+        return totalCount >= 1 && adultCount >= 1
     }
 
     return (
