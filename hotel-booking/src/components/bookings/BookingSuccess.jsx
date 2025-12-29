@@ -1,9 +1,28 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
 const BookingSuccess = () => {
-  return (
-    <div>BookingSuccess</div>
-  )
+    const location = useLocation()
+    const message = location.state?.message
+    const error = location.state?.error
+
+    return (
+        <div className='container'>
+            <Header title='Booking Success' />
+            <div className='mt-5'>
+                {message ? (
+                    <div>
+                        <h3 className='text-success'>Booking Success!</h3>
+                        <p className='text-success'>{message}</p>
+                    </div>
+
+                ): (
+                    <div></div>
+                )}
+            </div>
+
+        </div>
+    )
 }
 
 export default BookingSuccess
