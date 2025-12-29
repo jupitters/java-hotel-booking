@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams} from "react-router-dom";
 import { getRoomById } from '../utils/ApiFunctions'
 
 const BookingForm = () => {
+    const { roomId } = useParams()
     const [isValidated, setIsValidated] = useState(false)
     const [isSubmited, setIsSubmited] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
@@ -33,6 +35,14 @@ const BookingForm = () => {
         } catch (error) {
             throw new Error(error)
         }
+    }
+
+    useEffect(() => {
+        getRoomPriceById(roomId)
+    }, [roomId])
+
+    const calculatePayment = () => {
+        const checkInDate = moment()
     }
 
     return (
