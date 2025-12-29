@@ -34,7 +34,7 @@ export async function getAllRooms(){
         const response = await api.get("/room/all")
         return response.data
     } catch (error) {
-        throw new Error("Error fetching rooms!")
+        throw new Error(`Error fetching rooms: ${error.message}`)
     }
 }
 
