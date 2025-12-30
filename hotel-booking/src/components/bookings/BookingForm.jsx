@@ -55,7 +55,7 @@ const BookingForm = () => {
 
     const isGuestValid = () => {
         const adultCount = parseInt(booking.numberOfAdults)
-        const childrenCount = parseInt(booking.numberOfChildren)
+        const childrenCount = parseInt(booking.numberOfChildren || "0")
         const totalCount = adultCount + childrenCount
         return totalCount >= 1 && adultCount >= 1
     }
@@ -170,7 +170,7 @@ const BookingForm = () => {
                 </div>
                 <div className='col-md-6'>
                     {isSubmited && (
-                        <BookingSummary booking={booking} payment={calculatePayment} isFormValid={isValidated} onConfirm={handleBooking} />
+                        <BookingSummary booking={booking} payment={calculatePayment()} isFormValid={isValidated} onConfirm={handleBooking} />
                     )}
                 </div>
             </div>
