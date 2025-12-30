@@ -158,7 +158,7 @@ const BookingForm = () => {
                                         <FormLabel htmlFor="numberOfChildren">
                                             Children: 
                                         </FormLabel>
-                                        <FormControl required type="number" id="numberOfChildren" name="numberOfChildren" value={booking.numberOfChildren} placeholder="0" onChange={handleInputChange} />
+                                        <FormControl type="number" id="numberOfChildren" name="numberOfChildren" value={booking.numberOfChildren} placeholder="0" onChange={handleInputChange} />
                                     </div>
                                 </div>
                             </fieldset>
