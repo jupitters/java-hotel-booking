@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Form, useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { bookRoom, getRoomById } from '../utils/ApiFunctions'
 import moment from "moment"
 import BookingSummary from './BookingSummary';
-import {FormControl, FormGroup, FormLabel} from "react-bootstrap";
+import {Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 
 const BookingForm = () => {
     const { roomId } = useParams()
