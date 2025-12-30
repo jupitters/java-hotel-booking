@@ -1,5 +1,4 @@
-import {Link} from "react-router-dom";
-import {NavLink} from "react-bootstrap";
+import {Link, NavLink} from "react-router-dom";
 import {useState} from "react";
 
 const Navbar = () => {
@@ -21,12 +20,12 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarScroll">
                     <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
                         <li className="nav-item">
-                            <NavLink classname="nav-link" aria-current="page" to={"/all-rooms"}>
+                            <NavLink className="nav-link" aria-current="page" to={"/browse-all-rooms"}>
                                 Browse all rooms
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink classname="nav-link" aria-current="page" to={"/admin"}>
+                            <NavLink className="nav-link" aria-current="page" to={"/admin"}>
                                 Manage Rooms
                             </NavLink>
                         </li>
