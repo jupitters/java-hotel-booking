@@ -1,6 +1,7 @@
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {Button} from "react-bootstrap";
 
 const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
     const checkInDate = moment(booking.checkInDate)
@@ -28,7 +29,7 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
   return (
     <div className='card card-body mt-5'>
         <h4>Reservation Summary</h4>
-        <p>Fullname: <strong>{booking.guestName}</strong></p>
+        <p>Fullname: <strong>{booking.guestFullName}</strong></p>
         <p>Email: <strong>{booking.guestEmail}</strong></p>
         <p>Check-in Date: <strong>{moment(booking.checkInDate).format("DD MMM YYYY")}</strong></p>
         <p>Check-out Date: <strong>{moment(booking.checkOutDate).format("DD MMM YYYY")}</strong></p>

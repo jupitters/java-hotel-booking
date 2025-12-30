@@ -48,7 +48,7 @@ const BookingForm = () => {
     const calculatePayment = () => {
         const checkInDate = moment(booking.checkInDate)
         const checkOutDate = moment(booking.checkOutDate)
-        const diffInDays = checkOutDate.diff(checkInDate)
+        const diffInDays = checkOutDate.diff(checkInDate, "days")
         const price = roomPrice ? roomPrice : 0
         return diffInDays * price
     }
