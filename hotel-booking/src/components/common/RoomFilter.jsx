@@ -12,7 +12,7 @@ const RoomFilter = ({data, setFilteredData}) => {
 
     const clearFilter = () => {
         setFilter("")
-        setFilteredData("")
+        setFilteredData(data)
     }
 
     const roomTypes = ["", ...new Set(data.map((room) => room.roomType))]
