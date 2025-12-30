@@ -101,30 +101,30 @@ const BookingForm = () => {
                         <h4 className='card card-title'>Reserve Room</h4>
                         <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
                             <FormGroup>
-                                <Form.Label htmlFor="guestFullName">
+                                <FormLabel htmlFor="guestFullName">
                                     Full Name: 
-                                </Form.Label>
-                                <Form.Control required type="text" id="guestFullName" name="guestFullName" value={booking.guestFullName} placeholder="Enter your full name" onChange={handleInputChange} />
-                                <Form.Control.Feedback type="invalid">
+                                </FormLabel>
+                                <FormControl required type="text" id="guestFullName" name="guestFullName" value={booking.guestFullName} placeholder="Enter your full name" onChange={handleInputChange} />
+                                <FormControl.Feedback type="invalid">
                                     Please, enter your full name.
-                                </Form.Control.Feedback>
+                                </FormControl.Feedback>
                             </FormGroup>
                             <FormGroup>
-                                <Form.Label htmlFor="guestEmail">
+                                <FormLabel htmlFor="guestEmail">
                                     Email: 
-                                </Form.Label>
-                                <Form.Control required type="email" id="guestEmail" name="guestEmail" value={booking.guestEmail} placeholder="Enter your email" onChange={handleInputChange} />
-                                <Form.Control.Feedback type="invalid">
+                                </FormLabel>
+                                <FormControl required type="email" id="guestEmail" name="guestEmail" value={booking.guestEmail} placeholder="Enter your email" onChange={handleInputChange} />
+                                <FormControl.Feedback type="invalid">
                                     Please, enter your email.
-                                </Form.Control.Feedback>
+                                </FormControl.Feedback>
                             </FormGroup>
                             <fieldset style={{border: "2px"}}>
                                 <legend>Loading period</legend>
                                 <div className='row'>
                                     <div className='col-6'>
-                                        <Form.Label htmlFor="checkInDate">
+                                        <FormLabel htmlFor="checkInDate">
                                             Check-In Date: 
-                                        </Form.Label>
+                                        </FormLabel>
                                         <FormControl required type="date" id="checkInDate" name="checkInDate" value={booking.checkInDate} placeholder="Check-In Date" onChange={handleInputChange} />
                                         <FormControl.Feedback type="invalid">
                                             Please, select a check-in date.
