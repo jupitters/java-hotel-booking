@@ -3,6 +3,7 @@ import { Form, useNavigate, useParams} from "react-router-dom";
 import { bookRoom, getRoomById } from '../utils/ApiFunctions'
 import moment from "moment"
 import BookingSummary from './BookingSummary';
+import {FormControl, FormGroup, FormLabel} from "react-bootstrap";
 
 const BookingForm = () => {
     const { roomId } = useParams()
@@ -12,7 +13,7 @@ const BookingForm = () => {
     const [errorMessage, setErrorMessage] = useState("")
     const [roomPrice, setRoomPrice] = useState(0)
     const [booking, setBooking] = useState({
-        guestName: "",
+        guestFullName: "",
         guestEmail: "",
         checkInDate: "",
         checkOutDate: "",
@@ -99,16 +100,16 @@ const BookingForm = () => {
                     <div className='card card-body mt-5'>
                         <h4 className='card card-title'>Reserve Room</h4>
                         <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
-                            <Form.Group>
-                                <Form.Label htmlFor="guestName">
+                            <FormGroup>
+                                <Form.Label htmlFor="guestFullName">
                                     Full Name: 
                                 </Form.Label>
-                                <Form.Control required type="text" id="guestName" name="guestName" value={booking.guestName} placeholder="Enter your full name" onChange={handleInputChange} />
+                                <Form.Control required type="text" id="guestFullName" name="guestFullName" value={booking.guestFullName} placeholder="Enter your full name" onChange={handleInputChange} />
                                 <Form.Control.Feedback type="invalid">
                                     Please, enter your full name.
                                 </Form.Control.Feedback>
-                            </Form.Group>
-                            <Form.Group>
+                            </FormGroup>
+                            <FormGroup>
                                 <Form.Label htmlFor="guestEmail">
                                     Email: 
                                 </Form.Label>
@@ -116,7 +117,7 @@ const BookingForm = () => {
                                 <Form.Control.Feedback type="invalid">
                                     Please, enter your email.
                                 </Form.Control.Feedback>
-                            </Form.Group>
+                            </FormGroup>
                             <fieldset style={{border: "2px"}}>
                                 <legend>Loading period</legend>
                                 <div className='row'>
@@ -124,19 +125,19 @@ const BookingForm = () => {
                                         <Form.Label htmlFor="checkInDate">
                                             Check-In Date: 
                                         </Form.Label>
-                                        <Form.Control required type="date" id="checkInDate" name="checkInDate" value={booking.checkInDate} placeholder="Check-In Date" onChange={handleInputChange} />
-                                        <Form.Control.Feedback type="invalid">
+                                        <FormControl required type="date" id="checkInDate" name="checkInDate" value={booking.checkInDate} placeholder="Check-In Date" onChange={handleInputChange} />
+                                        <FormControl.Feedback type="invalid">
                                             Please, select a check-in date.
-                                        </Form.Control.Feedback>
+                                        </FormControl.Feedback>
                                     </div>
                                     <div className='col-6'>
-                                        <Form.Label htmlFor="checkOutDate">
+                                        <FormLabel htmlFor="checkOutDate">
                                             Check-Out Date: 
-                                        </Form.Label>
-                                        <Form.Control required type="date" id="checkOutDate" name="checkOutDate" value={booking.checkOutDate} placeholder="Check-In Date" onChange={handleInputChange} />
-                                        <Form.Control.Feedback type="invalid">
+                                        </FormLabel>
+                                        <FormControl required type="date" id="checkOutDate" name="checkOutDate" value={booking.checkOutDate} placeholder="Check-In Date" onChange={handleInputChange} />
+                                        <FormControl.Feedback type="invalid">
                                             Please, select a check-out date.
-                                        </Form.Control.Feedback>
+                                        </FormControl.Feedback>
                                     </div>
                                     {errorMessage && <p className='error-message text-danger'>{errorMessage}</p>}
                                 </div>
@@ -145,19 +146,19 @@ const BookingForm = () => {
                                 <legend>Number of Guests</legend>
                                 <div className='row'>
                                     <div className='col-6'>
-                                        <Form.Label htmlFor="numberOfAdults">
+                                        <FormLabel htmlFor="numberOfAdults">
                                             Adults: 
-                                        </Form.Label>
-                                        <Form.Control required type="number" id="numberOfAdults" name="numberOfAdults" value={booking.numberOfAdults} placeholder="0" min={1} onChange={handleInputChange} />
-                                        <Form.Control.Feedback type="invalid">
+                                        </FormLabel>
+                                        <FormControl required type="number" id="numberOfAdults" name="numberOfAdults" value={booking.numberOfAdults} placeholder="0" min={1} onChange={handleInputChange} />
+                                        <FormControl.Feedback type="invalid">
                                             Please, select at least 1 adult.
-                                        </Form.Control.Feedback>
+                                        </FormControl.Feedback>
                                     </div>
                                     <div className='col-6'>
-                                        <Form.Label htmlFor="numberOfChildren">
+                                        <FormLabel htmlFor="numberOfChildren">
                                             Children: 
-                                        </Form.Label>
-                                        <Form.Control required type="number" id="numberOfChildren" name="numberOfChildren" value={booking.numberOfChildren} placeholder="0" onChange={handleInputChange} />
+                                        </FormLabel>
+                                        <FormControl required type="number" id="numberOfChildren" name="numberOfChildren" value={booking.numberOfChildren} placeholder="0" onChange={handleInputChange} />
                                     </div>
                                 </div>
                             </fieldset>
